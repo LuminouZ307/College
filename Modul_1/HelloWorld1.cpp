@@ -1,5 +1,5 @@
 /* --------------------------------------------
-   Nama Program  : Hello World 2
+   Nama Program  : Hello World
    Nama          : Arif Rahman Hudaya
    NPM           : 2420501046
    Tanggal Buat  : 16 Februari 2025
@@ -7,13 +7,10 @@
    -------------------------------------------- */
 
 #include <iostream>
-using namespace std;
 
 int main() {
     // Menampilkan output
-    cout << "Hello World!!! \n";
-    cout << "\nBelajar Bahasa C++" << endl;
-    cout << "Teknik Elektro Untidar";
+    std::cout << "Hello World!!!";
     
     return 0;
 }

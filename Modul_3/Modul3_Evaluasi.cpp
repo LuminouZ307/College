@@ -5,44 +5,37 @@ using namespace std;
 
 int main() {
     int pemakaian;
-    double totalBiaya = 0.0;
-
+    double total_biaya = 455000;
+	int sisa_jam;
+	
     cout << "Lama pemakaian: ";
     cin >> pemakaian;
 
-    if (pemakaian <= 24) {
-        totalBiaya = 455000; /* kl kurang / sama dgn 24jam */
-    } else {
-        totalBiaya = 455000;
-        int sisaJam = pemakaian - 24;
-        if (sisaJam > 0) {
-            totalBiaya += 55000; /* 2 jam kedua */
-            sisaJam -= 2;
+   	if(pemakaian > 24) {
+        sisa_jam = pemakaian - 24;
+        if (sisa_jam > 0) {
+            total_biaya += 55000;
+            sisa_jam -= 2;
         }
-        if (sisaJam > 0) {
-            totalBiaya += 75000; /* 2 jam ketiga */
-            sisaJam -= 2;
+        if (sisa_jam > 0) {
+            total_biaya += 75000; 
+            sisa_jam -= 2;
         }
         
-		/* 2 jam seterusnya */
-        if (sisaJam > 0) {
-            int total_2_jam_lebih = sisaJam / 2; 
-            if (sisaJam % 2 != 0) {
-                total_2_jam_lebih++; /* kl sisa 2 jam */
-            }
-            totalBiaya += total_2_jam_lebih * 95000; /* dikali 2 jam seterusnya * 95k */
+        if (sisa_jam % 2 == 0) {
+            total_biaya += (sisa_jam / 2) * 95000;
         }
+        
     }
 
-    /* diskon */
-	if (pemakaian > 35) {
-	    totalBiaya = totalBiaya * 0.85; /* potongan 15% dr total */
+	if(pemakaian > 35) {
+		total_biaya -= total_biaya * 15/100;
 	}
-    if (pemakaian > 48) {
-        totalBiaya -= 455000 * 0.10; /* Potongan 10% dr 24jam */
-    }
-
-    cout << "Total Biaya: IDR" << fixed << setprecision(0) << totalBiaya << endl;
-
+	
+	if(pemakaian > 48) {
+		total_biaya -= 455000 * 10/100;
+	}
+	
+	cout << "Total Biaya: " << fixed << setprecision(0) << total_biaya;
     return 0;
 }
